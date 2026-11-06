@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    <p>@ViewBag.DatabasesStatus</p>
+
+    @{
+        ViewData["Title"] = "Upload Drone Images";
+    }
+
+    <h2>AgriStream IoT - Drone Image Upload</h2>
+
+    <hr />
+
+    <form asp-controller="Upload"
+          asp-action="Upload"
+          method="post"
+          enctype="multipart/form-data">
+
+        <div class="form-group">
+            <label>Select Farm Image:</label>
+
+            <input type="file"
+                   name="file"
+                   class="form-control"
+                   accept="image/*"
+                   required />
+        </div>
+
+        <br />
+
+        <button type="submit" class="btn btn-primary">
+            Upload Image
+        </button>
+
+    </form>
+
+    <br />
+
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-info">
+            @ViewBag.Message
+        </div>
+    }
+
+</div>
